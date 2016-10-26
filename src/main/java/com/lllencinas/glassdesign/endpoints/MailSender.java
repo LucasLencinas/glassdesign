@@ -1,9 +1,7 @@
 package com.lllencinas.glassdesign.endpoints;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,9 +34,9 @@ public class MailSender {
 
 		try {
 		    Message msg = new MimeMessage(session);
-		    msg.setFrom(new InternetAddress("lllencinas@gmail.com", "glassdesign admin"));
+		    msg.setFrom(new InternetAddress("lucas.lencinas@hotmail.com", "Mister Lucas"));
 		    msg.addRecipient(Message.RecipientType.TO,
-		     new InternetAddress("lucas.lencinas@hotmail.com", "Mister Lucas"));
+		     new InternetAddress("lllencinas@gmail.com", "glassdesign admin"));
 		    msg.setSubject("Subject de ejemplo");
 		    msg.setText(msgBody);
 		    Transport.send(msg);
@@ -56,12 +54,5 @@ public class MailSender {
 		}
 		
 		return Response.ok("{}",MediaType.APPLICATION_JSON).build();
-	}	
-	
-	@POST 
-	@Produces("application/json")
-	public Response loadRampasByBarrio(@PathParam("barrio") String barrio) {
-		System.out.println("Me llego un GET a echo");
-		return Response.ok("{}",MediaType.APPLICATION_JSON).build();		
 	}
 }
