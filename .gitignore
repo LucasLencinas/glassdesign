@@ -1,4 +1,6 @@
 .classpath
+node_modules
+*.log
 .project
 .settings
 target
